@@ -16,7 +16,7 @@ public class Main {
         List<Double> xs = new ArrayList<>();
         List<Double> ys = new ArrayList<>();
 
-        for(double i = 0; i <= 180; i++){
+        for(double i = 0; i < 360; i++){
             Pyhiscs boatPhysics = new Pyhiscs(i);
             boatPhysics.calculate();
             xs.add(boatPhysics.getX());

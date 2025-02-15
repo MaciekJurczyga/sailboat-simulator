@@ -62,8 +62,13 @@ public class Pyhiscs {
 
     private double y;
 
+    private boolean v_in_range_180_360 = false;
+
     public Pyhiscs(double v_deg){
-        this.v_deg = v_deg;
+        if(v_deg > 180){
+            v_in_range_180_360 = true;
+        }
+        this.v_deg = v_deg = (v_deg > 180) ? 360 - v_deg : v_deg;
         this.v_rad = v_deg * Math.PI/180;
         this.tan_of_v = Math.tan(v_rad);
 
@@ -150,6 +155,9 @@ public class Pyhiscs {
     }
 
     public double getX(){
+        if(v_in_range_180_360){
+            return -1 * x;
+        }
         return this.x;
     }
 
