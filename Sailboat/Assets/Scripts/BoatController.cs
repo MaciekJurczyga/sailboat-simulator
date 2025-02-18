@@ -22,6 +22,8 @@ public class BoatController : MonoBehaviour
         if (Time.time >= nextLogTime)
         {
             Debug.Log( "Attack angle: " + CalculateAttackAngle());
+            
+            nextLogTime = Time.time + logInterval; 
         }
     }
 

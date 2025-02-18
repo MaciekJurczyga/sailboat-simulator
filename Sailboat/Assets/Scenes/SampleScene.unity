@@ -608,6 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 50
+  logInterval: 3
 --- !u!4 &532192883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e31a3f56ee0e9504fb8ec1f7a581165d, type: 3}
