@@ -1,17 +1,22 @@
 using UnityEngine;
 
-public class WindSystem : MonoBehaviour
+public class WindSystem
 {
-    public float windAngle = 0f; 
-    public float windSpeedKnots = 10f; 
+    private float _windAngle = 0f; 
+    const float WindSpeedKnots = 10f; 
     
     public float GetWindSpeedMS()
     {
-        return windSpeedKnots * 0.5144f; 
+        return WindSpeedKnots * 0.5144f; 
     }
 
     public float GetWindSpeedKnots()
     {
-        return windSpeedKnots;
+        return WindSpeedKnots;
+    }
+
+    public float getWindAngle()
+    {
+        return _windAngle;
     }
 }
