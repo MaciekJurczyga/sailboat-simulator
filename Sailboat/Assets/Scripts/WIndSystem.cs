@@ -9,4 +9,9 @@ public class WindSystem : MonoBehaviour
     {
         return windSpeedKnots * 0.5144f; 
     }
+
+    public float GetWindSpeedKnots()
+    {
+        return windSpeedKnots;
+    }
 }
