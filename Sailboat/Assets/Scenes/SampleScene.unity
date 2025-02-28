@@ -233,7 +233,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -25}
-  m_SizeDelta: {x: 150, y: 50}
+  m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &100135336
 MonoBehaviour:
@@ -289,12 +289,12 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 2
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -787,6 +787,7 @@ GameObject:
   - component: {fileID: 527281393}
   - component: {fileID: 527281395}
   - component: {fileID: 527281396}
+  - component: {fileID: 527281397}
   m_Layer: 0
   m_Name: Sailboat_Game_Object
   m_TagString: Untagged
@@ -851,6 +852,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &527281397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527281392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f957053b29d45b7bf9bd8b3377669b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsText: {fileID: 100135336}
 --- !u!4 &532192883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e31a3f56ee0e9504fb8ec1f7a581165d, type: 3}
@@ -1087,7 +1101,6 @@ GameObject:
   - component: {fileID: 2132864542}
   - component: {fileID: 2132864544}
   - component: {fileID: 2132864543}
-  - component: {fileID: 2132864545}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1112,8 +1125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 250}
-  m_SizeDelta: {x: 250, y: 400}
+  m_AnchoredPosition: {x: 200, y: 250}
+  m_SizeDelta: {x: 350, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2132864543
 MonoBehaviour:
@@ -1153,19 +1166,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132864541}
   m_CullTransparentMesh: 1
---- !u!114 &2132864545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132864541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f957053b29d45b7bf9bd8b3377669b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statsText: {fileID: 100135336}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

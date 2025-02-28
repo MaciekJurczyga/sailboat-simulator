@@ -7,7 +7,7 @@ public class BoatController : MonoBehaviour
     private Rigidbody _rb;
     private BoatStatistics _boatStatistics;
     
-    private float boatSpeed = 0f;
+    private float _calculatedBoatSpeed = 0f;
     public float turnSpeed = 50f;
 
     private void Start()
@@ -31,16 +31,17 @@ public class BoatController : MonoBehaviour
             apparentWindAttackAngle = 360 - apparentWindAttackAngle;
         }
 
-        boatSpeed = _physics.GetBoatSpeed();
+        _calculatedBoatSpeed = _physics.GetBoatSpeed();
         
         MoveBoat();
         BoatTurning();
-        _boatStatistics.UpdateStats(trueWindAttackAngle, apparentWindAttackAngle, boatSpeed);
+        _boatStatistics.UpdateStats(trueWindAttackAngle, apparentWindAttackAngle, _calculatedBoatSpeed);
     }
 
     private void MoveBoat()
     {
-        _rb.MovePosition(_rb.position + Time.deltaTime * boatSpeed * transform.forward);
+        
+        _rb.MovePosition(_rb.position + Time.deltaTime * _calculatedBoatSpeed * transform.forward);
     }
 
     private float CalculateAttackAngle()
