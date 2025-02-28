@@ -5,17 +5,16 @@ public class BoatController : MonoBehaviour
     private WindSystem _wind;
     private PhysicsCalculator _physics;
     private Rigidbody _rb;
+    private BoatStatistics _boatStatistics;
     
-    public float logInterval = 1f;
-    private float nextLogTime = 0f;
     private float boatSpeed = 0f;
     public float turnSpeed = 50f;
-    private float drag = 0.1f;
 
     private void Start()
     {
         _wind = new WindSystem();
         _physics = new PhysicsCalculator();
+        _boatStatistics = GetComponent<BoatStatistics>();
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;
         _rb.isKinematic = false;
@@ -36,21 +35,11 @@ public class BoatController : MonoBehaviour
         
         MoveBoat();
         BoatTurning();
-        LogBoatStatistics(trueWindAttackAngle, apparentWindAttackAngle);
-        
+        _boatStatistics.UpdateStats(trueWindAttackAngle, apparentWindAttackAngle, boatSpeed);
     }
 
     private void MoveBoat()
     {
-        if (boatSpeed == 0)
-        {
-       
-            var currentSpeed = _rb.linearVelocity.magnitude;
-            if (currentSpeed > 0)
-            {
-                boatSpeed = Mathf.Max(currentSpeed - drag * Time.deltaTime, 0f); 
-            }
-        }
         _rb.MovePosition(_rb.position + Time.deltaTime * boatSpeed * transform.forward);
     }
 
@@ -75,17 +64,6 @@ public class BoatController : MonoBehaviour
 
         Quaternion turnRotation = Quaternion.Euler(0, rotationAmount, 0);
         _rb.MoveRotation(_rb.rotation * turnRotation);
-    }
-
-
-    private void LogBoatStatistics(float trueWindAttackAngle, float apparentWindAttackAngle)
-    {
-        if (Time.time >= nextLogTime)
-        {
-            Debug.Log("True wind attack angle: " + trueWindAttackAngle + " | Boat Speed: " + boatSpeed +
-                      " | Apparent wind attack angle: " + apparentWindAttackAngle);
-            nextLogTime = Time.time + logInterval;
-        }
     }
 }
 
