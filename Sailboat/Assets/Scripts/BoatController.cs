@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BoatController : MonoBehaviour
@@ -6,8 +7,7 @@ public class BoatController : MonoBehaviour
     private PhysicsCalculator _physics;
     private Rigidbody _rb;
     private BoatStatistics _boatStatistics;
-    
-    private float _calculatedBoatSpeed = 0f;
+    private List<BoatData> _boatDataList = new List<BoatData>();
     public float turnSpeed = 50f;
 
     private void Start()
@@ -18,46 +18,44 @@ public class BoatController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;
         _rb.isKinematic = false;
+        for (float vDeg = 0; vDeg <= 180; vDeg += 0.1f)
+        {
+            _physics.Calculate(vDeg, _wind.GetWindSpeedKnots());
+            float wDeg = _physics.GetTrueWindAttackAngle();
+            float boatSpeed = _physics.GetBoatSpeed();
+            _boatDataList.Add(new BoatData(vDeg, wDeg, boatSpeed));
+        }
+        Debug.Log(_boatDataList.Count);
     }
 
     void Update()
     {
-        
         float trueWindAttackAngle = CalculateAttackAngle();
-        _physics.Calculate(trueWindAttackAngle, _wind.GetWindSpeedKnots());
-        float apparentWindAttackAngle = _physics.GetApparentWindAngleDegrees();
-        if (trueWindAttackAngle > 180 && trueWindAttackAngle <= 360)
-        {
-            apparentWindAttackAngle = 360 - apparentWindAttackAngle;
-        }
-
-        _calculatedBoatSpeed = _physics.GetBoatSpeed();
-        
-        MoveBoat();
+        float calculatedBoatSpeed = FindBoatSpeed(trueWindAttackAngle);
+        MoveBoat(calculatedBoatSpeed);
         BoatTurning();
-        _boatStatistics.UpdateStats(trueWindAttackAngle, apparentWindAttackAngle, _calculatedBoatSpeed);
+        _boatStatistics.UpdateStats(trueWindAttackAngle,  calculatedBoatSpeed, _wind.GetWindSpeedKnots());
     }
 
-    private void MoveBoat()
+    private void MoveBoat(float calculatedBoatSpeed)
     {
-        
-        _rb.MovePosition(_rb.position + Time.deltaTime * _calculatedBoatSpeed * transform.forward);
+        _rb.MovePosition(_rb.position + Time.deltaTime * calculatedBoatSpeed * transform.forward);
     }
 
     private float CalculateAttackAngle()
     {
-        // Calculates attack angle:
+        // Calculates true wind attack angle:
         // 0-180 left tack pl: hals
         // 180-360 right tack
         if (_wind == null) return 0f;
 
         var boatAngle = transform.eulerAngles.y;
-        var windAngle = _wind.getWindAngle();
+        var trueWindAngle = _wind.getWindAngle();
 
-        var diff = boatAngle - windAngle;
+        var diff = boatAngle - trueWindAngle;
         return diff >= 0 ? diff : 360 + diff;
     }
-
+    
     private void BoatTurning()
     {
         var turnInput = Input.GetAxis("Horizontal");
@@ -65,6 +63,34 @@ public class BoatController : MonoBehaviour
 
         Quaternion turnRotation = Quaternion.Euler(0, rotationAmount, 0);
         _rb.MoveRotation(_rb.rotation * turnRotation);
+    }
+    
+    private float FindBoatSpeed(float trueWindAttackAngle)
+    {
+        if (trueWindAttackAngle > 180 && trueWindAttackAngle <= 360)
+        {
+            trueWindAttackAngle = 360 - trueWindAttackAngle;
+        }
+
+        BoatData bestMatch = null;
+        float smallestDifference = float.MaxValue;
+        
+        foreach (var data in _boatDataList)
+        {
+            float difference = Mathf.Abs(data.wDeg - trueWindAttackAngle); 
+            if (difference < smallestDifference)
+            {
+                smallestDifference = difference;
+                bestMatch = data;
+            }
+        }
+        
+        if (bestMatch != null)
+        {
+            return bestMatch.boatSpeed;
+        }
+        
+        return 0f;
     }
 }
 

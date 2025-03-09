@@ -1,12 +1,20 @@
 ﻿using UnityEngine;
 
+
+/**
+ * v - apparent wind attack angle
+ * w - true wind attack angle
+ * sOfV = s(v) speed ratio parameter without including type of sailing
+ * adjustedSOfV = S(V) speed ration parameter including type of sailing
+ *
+ */
 public class PhysicsCalculator
 {
     private const float LiftToDragWaterRatio = 15f;
     private const float LiftToDragAirRatio = 5f;
-    private const float BaseSpeed = 1.5f;
+    private const float S0 = 1.5f;
     private static readonly float BorderAngleRad = -(Mathf.Atan(LiftToDragAirRatio) - Mathf.PI);
-
+    
     private float _sOfV;
     private float _adjustedSOfV;
     private float _wRad;
@@ -15,8 +23,6 @@ public class PhysicsCalculator
 
     public void Calculate(float vDeg, float windSpeedKnots)
     {
-        bool vInRange = vDeg > 180;
-        vDeg = vInRange ? 360 - vDeg : vDeg;
         float vRad = vDeg * Mathf.Deg2Rad;
 
         int deadAngleCheck1 = Mathf.Cos(BorderAngleRad - vRad) >= 0 ? 1 : 0;
@@ -32,13 +38,13 @@ public class PhysicsCalculator
     private float CalculateSOfV(int check1, int check2, float vRad)
     {
         if (check1 + check2 != 2) return 0;
-        return 0.5f * BaseSpeed * BaseSpeed * Mathf.Cos(BorderAngleRad - vRad) *
+        return 0.5f * S0 * S0 * Mathf.Cos(BorderAngleRad - vRad) *
                (1 + Mathf.Sqrt(1 - Mathf.Pow(Mathf.Tan(BorderAngleRad - vRad) / LiftToDragWaterRatio, 2)));
     }
 
     private float CalculateAdjustedSOfV(float vRad)
     {
-        return (vRad < BorderAngleRad) ? _sOfV : BaseSpeed * BaseSpeed;
+        return (vRad < BorderAngleRad) ? _sOfV : S0 * S0;
     }
 
     private float CalculateWRad(float vRad)
@@ -70,7 +76,7 @@ public class PhysicsCalculator
         return _boatSpeed;
     }
 
-    public float GetApparentWindAngleDegrees()
+    public float GetTrueWindAttackAngle()
     {
         return _wDeg;
     }
