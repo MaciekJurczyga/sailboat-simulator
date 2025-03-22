@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BoatController : MonoBehaviour
@@ -9,6 +10,8 @@ public class BoatController : MonoBehaviour
     private BoatStatistics _boatStatistics;
     private List<BoatData> _boatDataList = new List<BoatData>();
     public float turnSpeed = 50f;
+    public float currentSpeed = 0;
+    private float tau = 1.5f;
 
     private void Start()
     {
@@ -18,7 +21,7 @@ public class BoatController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;
         _rb.isKinematic = false;
-        for (float vDeg = 0; vDeg <= 180; vDeg += 0.1f)
+        for (float vDeg = 0; vDeg <= 180; vDeg += 0.01f)
         {
             _physics.Calculate(vDeg, _wind.GetWindSpeedKnots());
             float wDeg = _physics.GetTrueWindAttackAngle();
@@ -34,12 +37,18 @@ public class BoatController : MonoBehaviour
         float calculatedBoatSpeed = FindBoatSpeed(trueWindAttackAngle);
         MoveBoat(calculatedBoatSpeed);
         BoatTurning();
-        _boatStatistics.UpdateStats(trueWindAttackAngle,  calculatedBoatSpeed, _wind.GetWindSpeedKnots());
+        _boatStatistics.UpdateStats(
+            trueWindAttackAngle, 
+            calculatedBoatSpeed,
+            currentSpeed, 
+            _wind.GetWindSpeedKnots());
     }
 
-    private void MoveBoat(float calculatedBoatSpeed)
+    private void MoveBoat(float targetSpeed)
     {
-        _rb.MovePosition(_rb.position + Time.deltaTime * calculatedBoatSpeed * transform.forward);
+        // apply boat acceleration to target speed
+        currentSpeed += (-1 / tau) * (currentSpeed - targetSpeed) * Time.deltaTime;
+        _rb.MovePosition(_rb.position + Time.deltaTime * currentSpeed * transform.forward);
     }
 
     private float CalculateAttackAngle()
@@ -77,7 +86,7 @@ public class BoatController : MonoBehaviour
         
         foreach (var data in _boatDataList)
         {
-            float difference = Mathf.Abs(data.wDeg - trueWindAttackAngle); 
+            float difference = Mathf.Abs(data.wDeg - trueWindAttackAngle);
             if (difference < smallestDifference)
             {
                 smallestDifference = difference;
