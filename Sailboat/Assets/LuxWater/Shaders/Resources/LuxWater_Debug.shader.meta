@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 9213012ce826046479b89c93045e982b
+timeCreated: 1535464425
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Shaders/Resources/LuxWater_Debug.shader
+  uploadId: 469366

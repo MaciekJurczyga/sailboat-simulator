@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 58e3390852e2af04bbea1657fbb9515d
+timeCreated: 1546115494
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Objects/Models/MiniSubmarine/Materials/Glass 1.mat
+  uploadId: 469366

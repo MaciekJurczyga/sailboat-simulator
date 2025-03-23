@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 148dc2f112f88014a9664c678de3d545
+timeCreated: 1533585718
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/FogShaders/PostProcessingStack_1/Fog.__shader
+  uploadId: 469366

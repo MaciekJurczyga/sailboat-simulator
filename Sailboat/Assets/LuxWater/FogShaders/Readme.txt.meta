@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d090f609464a76c4d8bbcd44d0dbe85a
+timeCreated: 1530345089
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/FogShaders/Readme.txt
+  uploadId: 469366

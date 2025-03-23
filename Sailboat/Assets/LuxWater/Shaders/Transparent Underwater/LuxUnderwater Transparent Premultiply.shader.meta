@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: dba2c2e0ff09b5040b891b927e0f3bfb
+timeCreated: 1546090987
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Shaders/Transparent Underwater/LuxUnderwater Transparent
+    Premultiply.shader
+  uploadId: 469366

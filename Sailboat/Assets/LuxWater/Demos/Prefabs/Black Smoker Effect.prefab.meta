@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cf683c1c84bc856429e4b535f5621a2f
+timeCreated: 1473159155
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Prefabs/Black Smoker Effect.prefab
+  uploadId: 469366

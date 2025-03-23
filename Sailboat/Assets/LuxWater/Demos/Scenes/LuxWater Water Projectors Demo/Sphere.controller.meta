@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 748f6fcb67f052c4789e12ee988fad75
+timeCreated: 1535570362
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Scenes/LuxWater Water Projectors Demo/Sphere.controller
+  uploadId: 469366

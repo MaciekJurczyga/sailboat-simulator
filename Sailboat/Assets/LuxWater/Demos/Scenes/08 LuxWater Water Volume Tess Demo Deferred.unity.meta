@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c252b57cefb57cc498e6129750b00126
+timeCreated: 1533560262
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Scenes/08 LuxWater Water Volume Tess Demo Deferred.unity
+  uploadId: 469366

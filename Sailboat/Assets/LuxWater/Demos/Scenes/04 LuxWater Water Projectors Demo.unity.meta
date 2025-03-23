@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b5d947bedabbffb4d9237128ee87874b
+timeCreated: 1526737256
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Scenes/04 LuxWater Water Projectors Demo.unity
+  uploadId: 469366

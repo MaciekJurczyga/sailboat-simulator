@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a8ad4b3a2b7ca474c8c248e0262a0bee
+timeCreated: 1545215304
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Shaders/Includes/LuxWater_Tess.cginc
+  uploadId: 469366

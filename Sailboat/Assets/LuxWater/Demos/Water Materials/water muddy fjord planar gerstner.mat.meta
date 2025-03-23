@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: abd91baf096454631b3d870db41c3a9a
+timeCreated: 1521817170
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Water Materials/water muddy fjord planar gerstner.mat
+  uploadId: 469366

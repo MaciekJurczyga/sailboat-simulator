@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 001cc32e4d7f04306be26d2f123078c8
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Fonts/ZwriteFont.shader
+  uploadId: 469366

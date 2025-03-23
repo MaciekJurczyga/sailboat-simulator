@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3f0665994b667b742921dcc868e8158f
+timeCreated: 1546115494
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Objects/Models/MiniSubmarine/Materials/Lights.mat
+  uploadId: 469366

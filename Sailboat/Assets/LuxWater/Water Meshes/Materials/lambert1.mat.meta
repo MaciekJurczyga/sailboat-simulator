@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 73f92b219693e8640b9edb0f1ef5d888
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Water Meshes/Materials/lambert1.mat
+  uploadId: 469366

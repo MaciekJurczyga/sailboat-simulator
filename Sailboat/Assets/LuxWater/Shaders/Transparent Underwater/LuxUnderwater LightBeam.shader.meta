@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 73fbf696610746b4d84b36bddd3e5909
+timeCreated: 1546074330
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Shaders/Transparent Underwater/LuxUnderwater LightBeam.shader
+  uploadId: 469366

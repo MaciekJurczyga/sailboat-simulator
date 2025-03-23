@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0bb0685d11f77ad479086231684f056a
+timeCreated: 1530345089
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Changelog.txt
+  uploadId: 469366

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e14d6472c3f24264c86881bfd44cc8c0
+timeCreated: 1533569390
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Shaders/Particles/Lux Like Premultiply Blend.shader
+  uploadId: 469366

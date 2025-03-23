@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ab1ce9312e2a6294ba98b9c8647f17f5
+timeCreated: 1572619574
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Water Meshes/Ocean_2019/Materials/lambert2.mat
+  uploadId: 469366

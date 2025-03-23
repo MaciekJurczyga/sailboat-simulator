@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: ea1abe1704f484cfea4d248236c9d5d6
+timeCreated: 1535465360
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Prefabs/Water Projectors/PF_Water Normal Projector
+    Ripples.prefab
+  uploadId: 469366

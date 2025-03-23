@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e620425f666e5d3428674c8ad4d3b66e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/TerrainAutoUpgrade/layer_SoilBeach [Albedo] [Smoothness]SoilBeach
+    [Normal]3d3aba195e4d26ee.terrainlayer
+  uploadId: 469366

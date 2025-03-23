@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 12d94227a40848c42af67e2cea15eaf1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Water Meshes/Materials/waterSurface.mat
+  uploadId: 469366

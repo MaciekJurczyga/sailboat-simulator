@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 33a374c017c856e4388c9b6faa8109a1
+timeCreated: 1546351679
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 119244
+  packageName: Lux Water
+  packageVersion: 1.2.3
+  assetPath: Assets/LuxWater/Demos/Materials/Particles/Underwater Sparks.mat
+  uploadId: 469366

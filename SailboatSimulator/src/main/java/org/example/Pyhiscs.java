@@ -56,7 +56,7 @@ public class Pyhiscs {
      * Boat Speed
      * UNIT: degrees
      */
-    private double U_of_w_;
+    public double U_of_w_;
 
     private double x;
 
@@ -163,5 +163,9 @@ public class Pyhiscs {
 
     public double getY(){
         return this.y;
+    }
+
+    public double getW_deg(){
+        return this.w_deg;
     }
 }
