@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -36,7 +34,7 @@ public class FloatingObjectV3 : MonoBehaviour
             float diff = floaters[i].position.y - waveHeight;
             if (diff < 0)
             {
-                m_Rigidbody.AddForceAtPosition(floatingPower * Math.Abs(diff) * Vector3.up  , floaters[i].position, ForceMode.Force);
+                m_Rigidbody.AddForceAtPosition(floatingPower * Mathf.Abs(diff) * Vector3.up, floaters[i].position, ForceMode.Force);
                 floatersUnderWater += 1;
                 if (!underwater)
                 {

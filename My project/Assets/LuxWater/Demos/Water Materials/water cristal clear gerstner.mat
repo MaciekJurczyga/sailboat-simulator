@@ -81,13 +81,13 @@ Material:
     - _FogAbsorptionCancellation: 1
     - _FresbnelFactor: 5
     - _FresnelPower: 2.2
-    - _GGlobalFrequency: 0.5
-    - _GGlobalRotation: 0
-    - _GGlobalSpeed: 1
+    - _GGlobalFrequency: 0.3
+    - _GGlobalRotation: 1
+    - _GGlobalSpeed: 0.4
     - _GerstnerElevationFactor: 1
     - _GerstnerEnabled: 1
     - _GerstnerIntensity: 0.1
-    - _GerstnerNormalIntensity: 0
+    - _GerstnerNormalIntensity: 1.79
     - _GerstnerPlanarNormalIntensity: 0.3
     - _GerstnerVertexIntensity: 0.2
     - _Glossiness: 0.942
@@ -152,17 +152,17 @@ Material:
     - _FinalBumpSpeed23: {r: -0.6458095, g: -0.082042746, b: 0, a: 0}
     - _FoamCapsContrast: {r: 0.18067227, g: 0.47478992, b: 0, a: 0}
     - _FoamColor: {r: 0.894, g: 0.894, b: 0.894, a: 0.206}
-    - _GAmplitude: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    - _GDirectionAB: {r: 1, g: 0, b: 0.99026805, a: -0.13917312}
-    - _GDirectionCD: {r: 0.8480481, g: -0.5299193, b: 0.819152, a: -0.57357645}
-    - _GFinalFrequency: {r: 0.5, g: 0.5, b: 0.5, a: 1.5}
-    - _GFinalSpeed: {r: 1, g: 1, b: 1.1, a: 1.5}
+    - _GAmplitude: {r: 0, g: 0, b: 0, a: 0}
+    - _GDirectionAB: {r: 0.99939084, g: -0.0348995, b: 0.98768836, a: -0.15643446}
+    - _GDirectionCD: {r: 0.83867055, g: -0.54463905, b: 0.809017, a: -0.5877853}
+    - _GFinalFrequency: {r: 0.3, g: 0.3, b: 0.3, a: 0.90000004}
+    - _GFinalSpeed: {r: 0.4, g: 0.4, b: 0.44000003, a: 0.6}
     - _GFrequency: {r: 1, g: 1, b: 1, a: 3}
-    - _GRotation: {r: 0, g: 8, b: 32, a: 35}
+    - _GRotation: {r: 1, g: 8, b: 32, a: 35}
     - _GSpeed: {r: 1, g: 1, b: 1.1, a: 1.5}
     - _GSteepness: {r: 1, g: 1, b: 1, a: 1}
     - _GerstnerSecondaryWaves: {r: 0, g: 4.3, b: 0.3, a: 1.65}
-    - _GerstnerVertexIntensity: {r: 0.1, g: 0.25, b: 0.1, a: 0}
+    - _GerstnerVertexIntensity: {r: 1, g: 0.25, b: 0.1, a: 0}
     - _SpecColor: {r: 0.204, g: 0.204, b: 0.204, a: 1}
     - _Speed: {r: 1.23, g: -1.49, b: 0.6, a: 0}
     - _TranslucencyColor: {r: 0.38798502, g: 0.44887856, b: 0.6698113, a: 1}
