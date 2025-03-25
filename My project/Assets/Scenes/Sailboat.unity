@@ -1307,6 +1307,7 @@ GameObject:
   - component: {fileID: 615335741}
   - component: {fileID: 615335739}
   - component: {fileID: 615335740}
+  - component: {fileID: 615335742}
   m_Layer: 0
   m_Name: SailboatGameObject
   m_TagString: Untagged
@@ -1412,6 +1413,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &615335742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615335737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8557cfea55ee943409ace7ff87ad5be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
 --- !u!1 &640850962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,32 +2025,60 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.188
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.097
+      value: -4.148
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 198474683407868104, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 199107916364651248, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_Materials.Array.size

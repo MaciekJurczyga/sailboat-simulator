@@ -8,7 +8,6 @@ public class FollowBoat : MonoBehaviour
         
     void LateUpdate()
     {
-        
         transform.position = boat.position + offset;
         transform.LookAt(boat);
     }
