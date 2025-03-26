@@ -152,7 +152,7 @@ Material:
     - _FinalBumpSpeed23: {r: -0.6458095, g: -0.082042746, b: 0, a: 0}
     - _FoamCapsContrast: {r: 0.18067227, g: 0.47478992, b: 0, a: 0}
     - _FoamColor: {r: 0.894, g: 0.894, b: 0.894, a: 0.206}
-    - _GAmplitude: {r: 0, g: 0, b: 0, a: 0}
+    - _GAmplitude: {r: 0.2, g: 0.2, b: 0.2, a: 0.2}
     - _GDirectionAB: {r: 0.99939084, g: -0.0348995, b: 0.98768836, a: -0.15643446}
     - _GDirectionCD: {r: 0.83867055, g: -0.54463905, b: 0.809017, a: -0.5877853}
     - _GFinalFrequency: {r: 0.3, g: 0.3, b: 0.3, a: 0.90000004}

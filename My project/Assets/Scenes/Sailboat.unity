@@ -2038,11 +2038,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.188
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.33
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2075,6 +2075,10 @@ PrefabInstance:
     - target: {fileID: 4772049670140692, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 198474683407868104, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: useRigidbodyForVelocity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198474683407868104, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: InitialModule.maxNumParticles
