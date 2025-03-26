@@ -43,15 +43,15 @@ Material:
     - _AbsorbtionHeight: 0
     - _AbsorbtionStrength: 1
     - _AbsorptionColorStrength: 1
-    - _AbsorptionDepth: 0.124
-    - _AbsorptionHeight: 0
+    - _AbsorptionDepth: 0.279
+    - _AbsorptionHeight: 5.92
     - _AbsorptionMaxHeight: 64
     - _AbsorptionStrength: 1
     - _BaseUVScale: 0.1
     - _BumpParallax: 0.3
     - _CausticMode: 1
     - _CausticsEnabled: 1
-    - _CausticsScale: 1.5
+    - _CausticsScale: 2.78
     - _CausticsSelfDistortion: 0.18
     - _CausticsSpeed: 4
     - _CausticsTiling: 0.2
@@ -65,7 +65,7 @@ Material:
     - _DetailDistance: 600
     - _DetailFadeRange: 200
     - _FinalFogDensity: 0
-    - _FoamCaps: 0.48
+    - _FoamCaps: 1.04
     - _FoamCapsSharpness: 0.219
     - _FoamEnabled: 1
     - _FoamFinalErosion: 0.375
@@ -80,14 +80,14 @@ Material:
     - _FoamTranslucencyIntensity: 5
     - _FogAbsorptionCancellation: 1
     - _FresbnelFactor: 5
-    - _FresnelPower: 2.2
+    - _FresnelPower: 2.91
     - _GGlobalFrequency: 0.3
     - _GGlobalRotation: 1
     - _GGlobalSpeed: 0.4
     - _GerstnerElevationFactor: 1
     - _GerstnerEnabled: 1
     - _GerstnerIntensity: 0.1
-    - _GerstnerNormalIntensity: 1.79
+    - _GerstnerNormalIntensity: 4.82
     - _GerstnerPlanarNormalIntensity: 0.3
     - _GerstnerVertexIntensity: 0.2
     - _Glossiness: 0.942
@@ -115,11 +115,11 @@ Material:
     - _ReflectionGeoScale: 0.5
     - _ReflectionGlossiness: 1
     - _ReflectionSmoothing: 1
-    - _ReflectionStrength: 0.386
+    - _ReflectionStrength: 0.85
     - _Refraction: 58
     - _ScatterOcclusion: 0.03
-    - _ScatteringNormalInfluence: 0.103
-    - _ScatteringPower: 3.86
+    - _ScatteringNormalInfluence: 0.102
+    - _ScatteringPower: 5.52
     - _SlopeAwareFoam: 0
     - _SlopeToMask: 1
     - _Tess: 1.3
@@ -130,7 +130,7 @@ Material:
     - _UnderwaterScatteringIntensity: 2
     - _UnderwaterScatteringPower: 1.75
     - _UsesWaterVolume: 0
-    - _WaterIOR: 1.3333
+    - _WaterIOR: 1.224
     - _WaterSurfaceYPos: 72.194756
     - _WorldSpaceMappingEnabled: 1
     - _ZTest: 4

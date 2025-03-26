@@ -10,8 +10,8 @@ public class BoatController : MonoBehaviour
     private BoatStatistics _boatStatistics;
     private List<BoatData> _boatDataList = new List<BoatData>();
     public float turnSpeed = 50f;
-    public float currentSpeed = 0;
-    private float tau = 1.5f;
+    public float tau = 2.5f;
+    private float currentSpeed = 0;
 
     private void Start()
     {
@@ -46,6 +46,10 @@ public class BoatController : MonoBehaviour
     private void MoveBoat(float targetSpeed)
     {
         // apply boat acceleration to target speed
+        
+        // if boat is in dead angle and its speed is 0, increase tau for more realistic slowing down
+        tau = targetSpeed == 0 ? 5f : 2.5f;
+
         currentSpeed += (-1 / tau) * (currentSpeed - targetSpeed) * Time.deltaTime;
         _rb.MovePosition(_rb.position + Time.deltaTime * currentSpeed * transform.forward);
     }
