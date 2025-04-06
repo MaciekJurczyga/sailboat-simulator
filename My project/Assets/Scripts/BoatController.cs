@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class BoatController : MonoBehaviour
@@ -17,36 +16,36 @@ public class BoatController : MonoBehaviour
     {
         _wind = new WindSystem();
         _physics = new PhysicsCalculator();
-        _boatStatistics = new BoatStatistics();
         _rb = GetComponent<Rigidbody>();
+        _boatStatistics = GetComponent<BoatStatistics>();
         _rb.isKinematic = false;
-        for (float vDeg = 0; vDeg <= 180; vDeg += 0.01f)
+        for (float vDeg = 0; vDeg <= 180; vDeg += 0.001f)
         {
             _physics.Calculate(vDeg, _wind.GetWindSpeedKnots());
             float wDeg = _physics.GetTrueWindAttackAngle();
             float boatSpeed = _physics.GetBoatSpeed();
             _boatDataList.Add(new BoatData(vDeg, wDeg, boatSpeed));
         }
+
         Debug.Log(_boatDataList.Count);
     }
 
     void Update()
     {
         float trueWindAttackAngle = CalculateAttackAngle();
-        float calculatedBoatSpeed = FindBoatSpeed(trueWindAttackAngle);
-        MoveBoat(calculatedBoatSpeed);
+        BoatData foundBoatData = FindBoatSpeed(trueWindAttackAngle);
+        MoveBoat(foundBoatData.CalculatedBoatSpeed);
         BoatTurning();
         _boatStatistics.UpdateStats(
-            trueWindAttackAngle, 
-            calculatedBoatSpeed,
-            currentSpeed, 
+            foundBoatData,
+            currentSpeed,
             _wind.GetWindSpeedKnots());
     }
 
     private void MoveBoat(float targetSpeed)
     {
         // apply boat acceleration to target speed
-        
+
         // if boat is in dead angle and its speed is 0, increase tau for more realistic slowing down
         tau = targetSpeed == 0 ? 5f : 2.5f;
 
@@ -67,7 +66,7 @@ public class BoatController : MonoBehaviour
         var diff = boatAngle - trueWindAngle;
         return diff >= 0 ? diff : 360 + diff;
     }
-    
+
     private void BoatTurning()
     {
         var turnInput = Input.GetAxis("Horizontal");
@@ -76,8 +75,8 @@ public class BoatController : MonoBehaviour
         Quaternion turnRotation = Quaternion.Euler(0, rotationAmount, 0);
         _rb.MoveRotation(_rb.rotation * turnRotation);
     }
-    
-    private float FindBoatSpeed(float trueWindAttackAngle)
+
+    private BoatData FindBoatSpeed(float trueWindAttackAngle)
     {
         if (trueWindAttackAngle > 180 && trueWindAttackAngle <= 360)
         {
@@ -86,7 +85,7 @@ public class BoatController : MonoBehaviour
 
         BoatData bestMatch = null;
         float smallestDifference = float.MaxValue;
-        
+
         foreach (var data in _boatDataList)
         {
             float difference = Mathf.Abs(data.wDeg - trueWindAttackAngle);
@@ -96,12 +95,12 @@ public class BoatController : MonoBehaviour
                 bestMatch = data;
             }
         }
-        
+
         if (bestMatch != null)
         {
-            return bestMatch.boatSpeed;
+            return bestMatch;
         }
-        
-        return 0f;
+
+        return new BoatData(0, 0, 0);
     }
 }
