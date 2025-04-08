@@ -50,4 +50,9 @@ public class BoatController : MonoBehaviour
         Quaternion turnRotation = Quaternion.Euler(0, rotationAmount, 0);
         _rb.MoveRotation(_rb.rotation * turnRotation);
     }
+
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
 }
