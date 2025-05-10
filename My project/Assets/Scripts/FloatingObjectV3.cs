@@ -24,7 +24,7 @@ public class FloatingObjectV3 : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
     }
     
-    void Update()
+    void FixedUpdate()
     {
         floatersUnderWater = 0;
         for (int i = 0; i < floaters.Length; i++)

@@ -20,7 +20,7 @@ public class BoatController : MonoBehaviour
         _physicsModel.LoadModel();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         BoatData foundBoatData = _physicsModel.FindBoatSpeed(transform.eulerAngles.y);
         MoveBoat(foundBoatData.CalculatedBoatSpeed);
