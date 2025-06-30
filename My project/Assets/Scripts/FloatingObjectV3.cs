@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class FloatingObjectV3 : MonoBehaviour
 {
+    // TODO: Skalowanie dumping z prędkością łodzi.
     [Header("Pływaki (Floaters)")]
     public Transform[] floaters;
 
