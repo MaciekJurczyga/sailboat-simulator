@@ -1497,8 +1497,9 @@ MonoBehaviour:
   - {fileID: 1846761794}
   - {fileID: 289531300}
   - {fileID: 1687084613}
-  floatingPower: 550
-  dampingPower: 5
+  floatingPower: 800
+  dampingFactorA: 10
+  baseDampingB: 5
   underWaterDrag: 3
   underWaterAngularDrag: 1
   airDrag: 0

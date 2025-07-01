@@ -10,8 +10,7 @@ public class BoatController : MonoBehaviour
     
     public float turnSpeed = 50f;
     public float tau = 2.5f;
-    private float currentSpeed = 0;
-
+    public float currentSpeed { get; private set; }
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();

@@ -3,13 +3,18 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class FloatingObjectV3 : MonoBehaviour
 {
-    // TODO: Skalowanie dumping z prędkością łodzi.
     [Header("Pływaki (Floaters)")]
     public Transform[] floaters;
 
     [Header("Ustawienia Wyporności")]
     public float floatingPower = 15f;
-    public float dampingPower = 5f; 
+    
+
+    [Header("Skalowanie Tłumienia z Prędkością (y = a*x + b)")]
+    [Tooltip("Współczynnik 'a' w równaniu. Określa, jak mocno prędkość wpływa na tłumienie.")]
+    public float dampingFactorA = 0.5f; 
+    [Tooltip("Współczynnik 'b' w równaniu. To bazowa wartość tłumienia, gdy łódź stoi w miejscu.")]
+    public float baseDampingB = 5f;   
 
     [Header("Ustawienia Oporu (Drag)")]
     public float underWaterDrag = 3f;
@@ -23,14 +28,20 @@ public class FloatingObjectV3 : MonoBehaviour
 
     private Rigidbody m_Rigidbody;
     private int floatersUnderWater;
-    
-
     private LuxWaterUtils.GersterWavesDescription waveDescription;
+    
+    private BoatController boatController;
 
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         
+        boatController = GetComponent<BoatController>();
+        if (boatController == null)
+        {
+            Debug.LogError("Nie znaleziono komponentu BoatController na tym obiekcie!", this);
+        }
+
         waveDescription = new LuxWaterUtils.GersterWavesDescription();
         LuxWaterUtils.GetGersterWavesDescription(ref waveDescription, waterMaterial);
     }
@@ -38,23 +49,30 @@ public class FloatingObjectV3 : MonoBehaviour
     void FixedUpdate()
     {
         floatersUnderWater = 0;
+
+        // NOWOŚĆ: Obliczenie aktualnego tłumienia na podstawie prędkości
+        float boatSpeed = boatController != null ? Mathf.Abs(boatController.currentSpeed) : 0f;
         
+        // Równanie liniowe: y = a*x + b
+        float calculatedDamping = (dampingFactorA * boatSpeed) + baseDampingB;
+        
+        // Zabezpieczenie, aby tłumienie nie było ujemne
+        calculatedDamping = Mathf.Max(0, calculatedDamping);
+
         for (int i = 0; i < floaters.Length; i++)
         {
-
             Vector3 waveDisplacement = LuxWaterUtils.GetGestnerDisplacement(floaters[i].position, waveDescription, timeOffset);
-            float waveHeight = waveDisplacement.y; 
+            float waveHeight = waveDisplacement.y;
 
             float diff = floaters[i].position.y - waveHeight;
 
             if (diff < 0)
             {
-               
                 m_Rigidbody.AddForceAtPosition(Vector3.up * floatingPower * Mathf.Abs(diff), floaters[i].position, ForceMode.Force);
                 
                 float verticalVelocity = m_Rigidbody.GetPointVelocity(floaters[i].position).y;
      
-                m_Rigidbody.AddForceAtPosition(Vector3.down * verticalVelocity * dampingPower, floaters[i].position, ForceMode.Force);
+                m_Rigidbody.AddForceAtPosition(Vector3.down * verticalVelocity * calculatedDamping, floaters[i].position, ForceMode.Force);
                 
                 floatersUnderWater++;
             }
