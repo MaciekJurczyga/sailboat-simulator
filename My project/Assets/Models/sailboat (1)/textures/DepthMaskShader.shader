@@ -1,10 +1,11 @@
-Shader "Custom/DepthMask" {
-    SubShader {
-        // Render before geometry to update depth buffer
-        Tags { "Queue" = "Geometry-10" }
-        // Turn off color rendering
+Shader "Custom/DepthMask"
+{
+    SubShader
+    {
+        Tags {"Queue" = "Geometry-10"}
         ColorMask 0
         ZWrite On
+        ZTest LEqual
         Pass {}
     }
 }
