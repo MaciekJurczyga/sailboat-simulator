@@ -161,7 +161,7 @@ Material:
     - _GRotation: {r: 1, g: 8, b: 32, a: 35}
     - _GSpeed: {r: 1, g: 1, b: 1.1, a: 1.5}
     - _GSteepness: {r: 1, g: 1, b: 1, a: 1}
-    - _GerstnerSecondaryWaves: {r: 0.5, g: 0.3, b: 0.3, a: 1.65}
+    - _GerstnerSecondaryWaves: {r: 0.6, g: 1, b: 0.2, a: 1}
     - _GerstnerVertexIntensity: {r: 1, g: 0.25, b: 0.1, a: 0}
     - _SpecColor: {r: 0.204, g: 0.204, b: 0.204, a: 1}
     - _Speed: {r: 1.23, g: -1.49, b: 0.6, a: 0}
