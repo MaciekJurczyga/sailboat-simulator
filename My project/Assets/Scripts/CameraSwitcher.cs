@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using LuxWater;
 
 public class CameraSwitcher : MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class CameraSwitcher : MonoBehaviour
     {
         for (int i = 0; i < cameras.Length; i++)
         {
-            cameras[i].enabled = (i == currentCameraIndex);
+            SetCameraState(cameras[i], false);
+        }
+        
+        if (cameras.Length > 0)
+        {
+            SetCameraState(cameras[currentCameraIndex], true);
         }
     }
 
@@ -17,11 +23,27 @@ public class CameraSwitcher : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            cameras[currentCameraIndex].enabled = false;
+            SetCameraState(cameras[currentCameraIndex], false);
             
             currentCameraIndex = (currentCameraIndex + 1) % cameras.Length;
-            
-            cameras[currentCameraIndex].enabled = true;
+            SetCameraState(cameras[currentCameraIndex], true);
+        }
+    }
+
+    void SetCameraState(Camera cam, bool state)
+    {
+        cam.enabled = state;
+        
+        AudioListener listener = cam.GetComponent<AudioListener>();
+        if (listener != null)
+        {
+            listener.enabled = state;
+        }
+        
+        LuxWater_ProjectorRenderer luxRenderer = cam.GetComponent<LuxWater_ProjectorRenderer>();
+        if (luxRenderer != null)
+        {
+            luxRenderer.enabled = state;
         }
     }
 }

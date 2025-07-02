@@ -427,9 +427,9 @@ GameObject:
   - component: {fileID: 121140919}
   - component: {fileID: 121140918}
   - component: {fileID: 121140917}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: On_Boat_Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -522,7 +522,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121140915}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -2103,6 +2103,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 199107916364651248, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 199107916364651248, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2189,7 +2193,7 @@ GameObject:
   - component: {fileID: 726194549}
   - component: {fileID: 726194548}
   - component: {fileID: 726194547}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Back_Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2577,6 +2581,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 199107916364651248, guid: be034563376b4d6449b67d5815e00814, type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 199107916364651248, guid: be034563376b4d6449b67d5815e00814, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2596,9 +2604,9 @@ GameObject:
   - component: {fileID: 922819357}
   - component: {fileID: 922819356}
   - component: {fileID: 922819355}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Top_Down_Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2691,7 +2699,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922819353}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
