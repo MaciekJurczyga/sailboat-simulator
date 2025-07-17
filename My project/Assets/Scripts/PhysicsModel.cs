@@ -70,7 +70,7 @@ public class PhysicsModel {
             return 0f;
         }
 
-        // TODO: zapytac się o wzór bo z arctg(LDWody) wychodzi 86 stopni
+        // TODO: zapytac się o wzór bo z arctg(LDWody), bo wychodzi 86 stopni
         float baseLeeway = 8f;
 
         // Lewy hals: vDeg < 180 → dryf w prawo → dodatni kąt dryfu
