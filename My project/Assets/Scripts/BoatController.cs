@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BoatController : MonoBehaviour
@@ -22,7 +23,8 @@ public class BoatController : MonoBehaviour
     void FixedUpdate()
     {
         BoatData foundBoatData = _physicsModel.FindBoatSpeed(transform.eulerAngles.y);
-        MoveBoat(foundBoatData.CalculatedBoatSpeed);
+        float leewayAngle = _physicsModel.FindLeewayAngle(foundBoatData);
+        MoveBoat(foundBoatData.CalculatedBoatSpeed, leewayAngle);
         TurnBoat();
         _boatStatistics.UpdateStats(
             foundBoatData,
@@ -30,14 +32,16 @@ public class BoatController : MonoBehaviour
             _windSystem.GetWindSpeedKnots());
     }
 
-    private void MoveBoat(float targetSpeed)
+    private void MoveBoat(float targetSpeed, float leewayAngle)
     {
         // apply boat acceleration to target speed
         // if boat is in dead angle and its speed is 0, increase tau for more realistic slowing down
         tau = targetSpeed == 0 ? 5f : 2.5f;
         currentSpeed += (-1 / tau) * (currentSpeed - targetSpeed) * Time.deltaTime;
-        
-        _rb.MovePosition(_rb.position + Time.deltaTime * currentSpeed * transform.forward);
+        Debug.Log(leewayAngle);        
+        Vector3 driftDirection = Quaternion.Euler(0, leewayAngle, 0) * transform.forward;
+
+        _rb.MovePosition(_rb.position + Time.deltaTime * currentSpeed * driftDirection.normalized);
     }
     
 

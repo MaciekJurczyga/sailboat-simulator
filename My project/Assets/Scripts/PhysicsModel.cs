@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -58,6 +59,28 @@ public class PhysicsModel {
             _boatDataList[i].wDeg = _boatDataList[i - 1].wDeg + delta;
         }
     }
+    
+    public float FindLeewayAngle(BoatData boatData)
+    {
+        float vDeg = boatData.vDeg;
+
+        // Martwy kąt wiatru — brak dryfu
+        if (vDeg > 135f && vDeg < 225f)
+        {
+            return 0f;
+        }
+
+        // TODO: zapytac się o wzór bo z arctg(LDWody) wychodzi 86 stopni
+        float baseLeeway = 8f;
+
+        // Lewy hals: vDeg < 180 → dryf w prawo → dodatni kąt dryfu
+        // Prawy hals: vDeg > 180 → dryf w lewo → ujemny kąt dryfu
+        
+        float signedLeeway = (vDeg < 180f) ? baseLeeway : -baseLeeway;
+
+        return signedLeeway;
+    }
+
 
     public BoatData FindBoatSpeed(float boatAngle)
     {

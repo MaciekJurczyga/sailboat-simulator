@@ -80,4 +80,9 @@ public class PhysicsCalculator
     {
         return _wDeg;
     }
+
+    public float GetLDWater()
+    {
+        return LiftToDragWaterRatio;
+    }
 }
