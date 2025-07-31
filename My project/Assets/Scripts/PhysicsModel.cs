@@ -64,7 +64,7 @@ public class PhysicsModel {
     {
         float vDeg = boatData.vDeg;
 
-        // Martwy kąt wiatru — brak dryfu
+        // bagsztag/fordewind — brak dryfu
         if (vDeg > 135f && vDeg < 225f)
         {
             return 0f;
