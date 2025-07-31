@@ -50,13 +50,11 @@ public class FloatingObjectV3 : MonoBehaviour
     {
         floatersUnderWater = 0;
 
-        // NOWOŚĆ: Obliczenie aktualnego tłumienia na podstawie prędkości
+        
         float boatSpeed = boatController != null ? Mathf.Abs(boatController.currentSpeed) : 0f;
         
-        // Równanie liniowe: y = a*x + b
         float calculatedDamping = (dampingFactorA * boatSpeed) + baseDampingB;
         
-        // Zabezpieczenie, aby tłumienie nie było ujemne
         calculatedDamping = Mathf.Max(0, calculatedDamping);
 
         for (int i = 0; i < floaters.Length; i++)
