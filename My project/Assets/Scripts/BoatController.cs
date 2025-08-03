@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BoatController : MonoBehaviour
 {
     private Rigidbody _rb;
     private BoatStatistics _boatStatistics;
+    private WindIndicatorController _windIndicatorController;
     private WindSystem _windSystem = WindSystem.GetInstance();
     private PhysicsModel _physicsModel = PhysicsModel.GetInstance();
     
@@ -16,6 +15,7 @@ public class BoatController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _boatStatistics = GetComponent<BoatStatistics>();
+        _windIndicatorController = GetComponent<WindIndicatorController>();
         _rb.isKinematic = false;
         _physicsModel.LoadModel();
     }
@@ -26,6 +26,7 @@ public class BoatController : MonoBehaviour
         float leewayAngle = _physicsModel.FindLeewayAngle(foundBoatData);
         MoveBoat(foundBoatData.CalculatedBoatSpeed, leewayAngle);
         TurnBoat();
+        _windIndicatorController.SetWindAngle(foundBoatData);
         _boatStatistics.UpdateStats(
             foundBoatData,
             currentSpeed,
