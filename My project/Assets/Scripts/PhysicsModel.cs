@@ -8,7 +8,7 @@ public class PhysicsModel {
     private PhysicsCalculator _physics = new PhysicsCalculator();
     private WindSystem _windSystem = WindSystem.GetInstance();
     private List<BoatData> _boatDataList = new List<BoatData>();
-    private List<BoatData> _sortedBoatDataList;
+    private Dictionary<int, List<BoatData>> _sortedBoatDataListByLDAirMap = new Dictionary<int, List<BoatData>>();
 
     
     private PhysicsModel() {}
@@ -22,27 +22,32 @@ public class PhysicsModel {
 
     public void LoadModel()
     {
-        int steps = 18000; // 180 / 0.001
-        for (int i = 0; i < steps; i++)
+        for (float ldAir = 1; ldAir <= 50; ldAir++)
         {
-            float vDeg = i * 0.01f;
-            _physics.Calculate(vDeg, _windSystem.GetWindSpeedKnots(), PhysicsCalculator.MaxLiftToDragAirRation);
-            float wDeg = _physics.GetTrueWindAttackAngle();
-            float boatSpeed = _physics.GetBoatSpeed();
+            int steps = 18000; // 180 / 0.001
+            for (int i = 0; i < steps; i++)
+            {
+                float vDeg = i * 0.01f;
+                _physics.Calculate(vDeg, _windSystem.GetWindSpeedKnots(), ldAir/10);
+                float wDeg = _physics.GetTrueWindAttackAngle();
+                float boatSpeed = _physics.GetBoatSpeed();
 
-            _boatDataList.Add(new BoatData(vDeg, wDeg, boatSpeed));
+                _boatDataList.Add(new BoatData(vDeg, wDeg, boatSpeed));
+            }
+            FillMissingWDegValues();
+            for (int i = 0; i < steps; i++)
+            {
+                var original = _boatDataList[i];
+                _boatDataList.Add(new BoatData(
+                    360f - original.vDeg,
+                    360f - original.wDeg,
+                    original.CalculatedBoatSpeed
+                ));
+            }
+
+            _sortedBoatDataListByLDAirMap[(int)ldAir] = _boatDataList.OrderBy(data => data.wDeg).ToList();  
+            _boatDataList.Clear();
         }
-        FillMissingWDegValues();
-        for (int i = 0; i < steps; i++)
-        {
-            var original = _boatDataList[i];
-            _boatDataList.Add(new BoatData(
-                360f - original.vDeg,
-                360f - original.wDeg,
-                original.CalculatedBoatSpeed
-            ));
-        }
-        _sortedBoatDataList = _boatDataList.OrderBy(data => data.wDeg).ToList();
     }
 
     private void FillMissingWDegValues()
@@ -84,20 +89,22 @@ public class PhysicsModel {
 
     public BoatData FindBoatSpeed(float boatAngle)
     {
+        int foundLDAir = 50; // TODO: add code to calculate this value
         float targetAttackAngle = CalculateAttackAngle(boatAngle);
+        List<BoatData> sortedBoatDataList = _sortedBoatDataListByLDAirMap[foundLDAir];
 
-        if (_sortedBoatDataList == null || _sortedBoatDataList.Count == 0)
+        if (sortedBoatDataList == null || sortedBoatDataList.Count == 0)
             return new BoatData(0, 0, 0);
 
         int left = 0;
-        int right = _sortedBoatDataList.Count - 1;
-        BoatData closest = _sortedBoatDataList[0];
+        int right = sortedBoatDataList.Count - 1;
+        BoatData closest = sortedBoatDataList[0];
         float smallestDiff = float.MaxValue;
 
         while (left <= right)
         {
             int mid = (left + right) / 2;
-            var midData = _sortedBoatDataList[mid];
+            var midData = sortedBoatDataList[mid];
             float diff = Mathf.Abs(midData.wDeg - targetAttackAngle);
 
             if (diff < smallestDiff)
