@@ -10,10 +10,10 @@
  */
 public class PhysicsCalculator
 {
+    public static float MaxLiftToDragAirRation = 5f;
     private const float LiftToDragWaterRatio = 15f;
-    private const float LiftToDragAirRatio = 5f;
     private const float S0 = 1.5f;
-    private static readonly float BorderAngleRad = -(Mathf.Atan(LiftToDragAirRatio) - Mathf.PI);
+    private static float _borderAngleRad = 0;
     
     private float _sOfV;
     private float _adjustedSOfV;
@@ -21,12 +21,13 @@ public class PhysicsCalculator
     private float _wDeg;
     private float _boatSpeed;
 
-    public void Calculate(float vDeg, float windSpeedKnots)
+    public void Calculate(float vDeg, float windSpeedKnots, float liftToDragAirRatio)
     {
+        _borderAngleRad = calculateBorderAngleRad(liftToDragAirRatio);
         float vRad = vDeg * Mathf.Deg2Rad;
 
-        int deadAngleCheck1 = Mathf.Cos(BorderAngleRad - vRad) >= 0 ? 1 : 0;
-        int deadAngleCheck2 = Mathf.Pow(Mathf.Tan((BorderAngleRad - vRad)) / LiftToDragWaterRatio, 2) <= 1 ? 1 : 0;
+        int deadAngleCheck1 = Mathf.Cos(_borderAngleRad - vRad) >= 0 ? 1 : 0;
+        int deadAngleCheck2 = Mathf.Pow(Mathf.Tan((_borderAngleRad - vRad)) / LiftToDragWaterRatio, 2) <= 1 ? 1 : 0;
 
         _sOfV = CalculateSOfV(deadAngleCheck1, deadAngleCheck2, vRad);
         _adjustedSOfV = CalculateAdjustedSOfV(vRad);
@@ -35,16 +36,20 @@ public class PhysicsCalculator
         _boatSpeed = CalculateBoatSpeed(vRad, windSpeedKnots);
     }
 
+    private float calculateBorderAngleRad(float liftToDragAirRation)
+    {
+        return  -(Mathf.Atan(liftToDragAirRation) - Mathf.PI);
+    }
     private float CalculateSOfV(int check1, int check2, float vRad)
     {
         if (check1 + check2 != 2) return 0;
-        return 0.5f * S0 * S0 * Mathf.Cos(BorderAngleRad - vRad) *
-               (1 + Mathf.Sqrt(1 - Mathf.Pow(Mathf.Tan(BorderAngleRad - vRad) / LiftToDragWaterRatio, 2)));
+        return 0.5f * S0 * S0 * Mathf.Cos(_borderAngleRad - vRad) *
+               (1 + Mathf.Sqrt(1 - Mathf.Pow(Mathf.Tan(_borderAngleRad - vRad) / LiftToDragWaterRatio, 2)));
     }
 
     private float CalculateAdjustedSOfV(float vRad)
     {
-        return (vRad < BorderAngleRad) ? _sOfV : S0 * S0;
+        return (vRad < _borderAngleRad) ? _sOfV : S0 * S0;
     }
 
     private float CalculateWRad(float vRad)

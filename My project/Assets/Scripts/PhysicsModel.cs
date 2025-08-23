@@ -26,7 +26,7 @@ public class PhysicsModel {
         for (int i = 0; i < steps; i++)
         {
             float vDeg = i * 0.01f;
-            _physics.Calculate(vDeg, _windSystem.GetWindSpeedKnots());
+            _physics.Calculate(vDeg, _windSystem.GetWindSpeedKnots(), PhysicsCalculator.MaxLiftToDragAirRation);
             float wDeg = _physics.GetTrueWindAttackAngle();
             float boatSpeed = _physics.GetBoatSpeed();
 

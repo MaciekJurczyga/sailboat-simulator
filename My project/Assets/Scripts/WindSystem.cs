@@ -2,6 +2,7 @@
 {
     private static WindSystem _instance;
     
+    // Range: 0-360 (must be positive!)
     private float _windAngle = 0f; 
     const float WindSpeedKnots = 10f; 
     

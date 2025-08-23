@@ -1,13 +1,17 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class WindIndicatorController : MonoBehaviour
 {
     public RectTransform arrowTransform;
+    public TextMeshProUGUI windSpeedText;
+    private WindSystem _windSystem = WindSystem.GetInstance();
     private float apparentWindAngle = 0f;
 
     void Update()
     {
         arrowTransform.localEulerAngles = new Vector3(0, 0, apparentWindAngle);
+        windSpeedText.text = _windSystem.GetWindSpeedKnots().ToString("F1");
     }
 
     public void SetWindAngle(BoatData boatData)
