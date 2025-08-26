@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class BoatController : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class BoatController : MonoBehaviour
     private WindIndicatorController _windIndicatorController;
     private WindSystem _windSystem = WindSystem.GetInstance();
     private PhysicsModel _physicsModel = PhysicsModel.GetInstance();
+    private PlotController _plotController = PlotController.getInstance();
+    public GraphDrawer graphDrawer;
     
     public float turnSpeed = 50f;
     public float tau = 2.5f;
@@ -18,6 +21,8 @@ public class BoatController : MonoBehaviour
         _windIndicatorController = GetComponent<WindIndicatorController>();
         _rb.isKinematic = false;
         _physicsModel.LoadModel();
+        _plotController.loadPoints(_physicsModel.getBoatDataForBestLD());
+        graphDrawer.DrawGraph(_plotController.getPoints());
     }
 
     void FixedUpdate()
@@ -39,7 +44,6 @@ public class BoatController : MonoBehaviour
         // if boat is in dead angle and its speed is 0, increase tau for more realistic slowing down
         tau = targetSpeed == 0 ? 5f : 2.5f;
         currentSpeed += (-1 / tau) * (currentSpeed - targetSpeed) * Time.deltaTime;
-        Debug.Log(leewayAngle);        
         Vector3 driftDirection = Quaternion.Euler(0, leewayAngle, 0) * transform.forward;
 
         _rb.MovePosition(_rb.position + Time.deltaTime * currentSpeed * driftDirection.normalized);

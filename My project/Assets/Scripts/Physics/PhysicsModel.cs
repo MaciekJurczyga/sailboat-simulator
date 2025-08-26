@@ -9,6 +9,7 @@ public class PhysicsModel {
     private WindSystem _windSystem = WindSystem.GetInstance();
     private List<BoatData> _boatDataList = new List<BoatData>();
     private Dictionary<int, List<BoatData>> _sortedBoatDataListByLDAirMap = new Dictionary<int, List<BoatData>>();
+    private int LDairScaler = 10;
 
     
     private PhysicsModel() {}
@@ -20,15 +21,19 @@ public class PhysicsModel {
         return _instance;
     }
 
+    public List<BoatData> getBoatDataForBestLD()
+    {
+        return _sortedBoatDataListByLDAirMap[PhysicsCalculator.MaxLiftToDragAirRation * LDairScaler];
+    }
     public void LoadModel()
     {
-        for (float ldAir = 1; ldAir <= 50; ldAir++)
+        for (float ldAir = 1; ldAir <= PhysicsCalculator.MaxLiftToDragAirRation*LDairScaler; ldAir++)
         {
             int steps = 18000; // 180 / 0.001
             for (int i = 0; i < steps; i++)
             {
                 float vDeg = i * 0.01f;
-                _physics.Calculate(vDeg, _windSystem.GetWindSpeedKnots(), ldAir/10);
+                _physics.Calculate(vDeg, _windSystem.GetWindSpeedKnots(), ldAir/LDairScaler);
                 float wDeg = _physics.GetTrueWindAttackAngle();
                 float boatSpeed = _physics.GetBoatSpeed();
 

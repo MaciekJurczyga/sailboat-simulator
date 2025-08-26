@@ -10,7 +10,7 @@
  */
 public class PhysicsCalculator
 {
-    public static float MaxLiftToDragAirRation = 5f;
+    public static int MaxLiftToDragAirRation = 5;
     private const float LiftToDragWaterRatio = 15f;
     private const float S0 = 1.5f;
     private static float _borderAngleRad = 0;
