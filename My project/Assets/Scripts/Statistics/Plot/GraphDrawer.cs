@@ -57,25 +57,22 @@ public class GraphDrawer : MonoBehaviour
         
         Vector2 plotOrigin = center - new Vector2(scaledW / 2f, scaledH / 2f);
 
-        // Pozycje osi w środku wykresu
-        float axisX_Y_globalPos = center.y; // pozioma oś w środku
-        float axisY_X_globalPos = center.x; // pionowa oś w środku
-
-        // Oś X
+    
+        float axisX_Y_globalPos = center.y; 
+        float axisY_X_globalPos = center.x; 
+        
         xAxis = CreateAxis(
             new Vector2(plotOrigin.x, axisX_Y_globalPos),
             new Vector2(plotOrigin.x + scaledW, axisX_Y_globalPos),
             "X Axis"
         );
-
-        // Oś Y
+        
         yAxis = CreateAxis(
             new Vector2(axisY_X_globalPos, plotOrigin.y),
             new Vector2(axisY_X_globalPos, plotOrigin.y + scaledH),
             "Y Axis"
         );
-
-        // Rysowanie punktów
+        
         for (int i = 0; i < points.Count; i++)
         {
             float lx = (points[i].getX() - minX) * s;
