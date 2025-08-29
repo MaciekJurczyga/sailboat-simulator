@@ -32,6 +32,7 @@ public class BoatController : MonoBehaviour
         MoveBoat(foundBoatData.CalculatedBoatSpeed, leewayAngle);
         TurnBoat();
         _windIndicatorController.SetWindAngle(foundBoatData);
+        graphDrawer.DrawUserPoint(foundBoatData);
         _boatStatistics.UpdateStats(
             foundBoatData,
             currentSpeed,
