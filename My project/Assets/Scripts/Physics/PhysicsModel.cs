@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PhysicsModel {
-    private static PhysicsModel _instance; 
-    private PhysicsCalculator _physics = new PhysicsCalculator();
-    private WindSystem _windSystem = WindSystem.GetInstance();
+public class PhysicsModel
+{
+
+    private PhysicsCalculator _physics;
     private List<BoatData> _boatDataList = new List<BoatData>();
     private Dictionary<int, List<BoatData>> _sortedBoatDataListByLDAirMap = new Dictionary<int, List<BoatData>>();
     private int LDairScaler = 10;
+    private WindSystem _windSystem;
 
-    
-    private PhysicsModel() {}
-    
-    public static PhysicsModel GetInstance() {
-        if (_instance == null) {
-            _instance = new PhysicsModel();
-        }
-        return _instance;
+    public PhysicsModel(WindSystem windSystem, PhysicsCalculator physicsCalculator)
+    {
+        _windSystem = windSystem;
+        _physics = physicsCalculator;
     }
+    
 
-    public List<BoatData> getBoatDataForBestLD()
+    public List<BoatData> GetBoatDataForBestLD()
     {
         return _sortedBoatDataListByLDAirMap[PhysicsCalculator.MaxLiftToDragAirRation * LDairScaler];
     }

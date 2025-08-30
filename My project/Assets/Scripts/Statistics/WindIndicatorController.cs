@@ -5,9 +5,13 @@ public class WindIndicatorController : MonoBehaviour
 {
     public RectTransform arrowTransform;
     public TextMeshProUGUI windSpeedText;
-    private WindSystem _windSystem = WindSystem.GetInstance();
-    private float apparentWindAngle = 0f;
+    private WindSystem _windSystem;
+    private float apparentWindAngle;
 
+    public void Initialize(WindSystem windSystem)
+    {
+        _windSystem = windSystem;
+    }
     void Update()
     {
         arrowTransform.localEulerAngles = new Vector3(0, 0, apparentWindAngle);

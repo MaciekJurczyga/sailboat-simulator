@@ -1,22 +1,11 @@
 ﻿public class WindSystem
 {
-    private static WindSystem _instance;
     
     // Range: 0-360 (must be positive!)
     private float _windAngle = 0f; 
     const float WindSpeedKnots = 10f; 
     
-    private WindSystem(){}
-
-    public static WindSystem GetInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new WindSystem();
-        }
-
-        return _instance;
-    }
+    public WindSystem(){}
     
     public float GetWindSpeedMS()
     {

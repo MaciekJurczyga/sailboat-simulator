@@ -26,9 +26,17 @@ public class GraphDrawer : MonoBehaviour
     private float s;
     private Vector2 plotOrigin; 
     private RectTransform userPointRT;
+    private GraphPointsWrapper _graphPointsWrapper;
 
-    public void DrawGraph(List<Point> points)
+    
+    public void Initialize(GraphPointsWrapper graphPointsWrapper) 
     {
+        _graphPointsWrapper = graphPointsWrapper;
+    }
+    
+    public void DrawGraph()
+    {
+        List<Point> points = _graphPointsWrapper.getPoints();
         if (points == null || points.Count == 0) return;
 
         minX = float.MaxValue; maxX = float.MinValue;

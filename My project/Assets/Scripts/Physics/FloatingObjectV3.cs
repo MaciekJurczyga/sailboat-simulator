@@ -39,7 +39,7 @@ public class FloatingObjectV3 : MonoBehaviour
         boatController = GetComponent<BoatController>();
         if (boatController == null)
         {
-            Debug.LogError("Nie znaleziono komponentu BoatController na tym obiekcie!", this);
+            Debug.LogError("BoatController object not found!", this);
         }
 
         waveDescription = new LuxWaterUtils.GersterWavesDescription();
@@ -50,8 +50,8 @@ public class FloatingObjectV3 : MonoBehaviour
     {
         floatersUnderWater = 0;
 
-        
-        float boatSpeed = boatController != null ? Mathf.Abs(boatController.currentSpeed) : 0f;
+
+        float boatSpeed = Mathf.Abs(boatController.GetCurrentSpeed());
         
         float calculatedDamping = (dampingFactorA * boatSpeed) + baseDampingB;
         
@@ -66,11 +66,11 @@ public class FloatingObjectV3 : MonoBehaviour
 
             if (diff < 0)
             {
-                m_Rigidbody.AddForceAtPosition(Vector3.up * floatingPower * Mathf.Abs(diff), floaters[i].position, ForceMode.Force);
+                m_Rigidbody.AddForceAtPosition(Vector3.up * (floatingPower * Mathf.Abs(diff)), floaters[i].position, ForceMode.Force);
                 
                 float verticalVelocity = m_Rigidbody.GetPointVelocity(floaters[i].position).y;
      
-                m_Rigidbody.AddForceAtPosition(Vector3.down * verticalVelocity * calculatedDamping, floaters[i].position, ForceMode.Force);
+                m_Rigidbody.AddForceAtPosition(Vector3.down * (verticalVelocity * calculatedDamping), floaters[i].position, ForceMode.Force);
                 
                 floatersUnderWater++;
             }

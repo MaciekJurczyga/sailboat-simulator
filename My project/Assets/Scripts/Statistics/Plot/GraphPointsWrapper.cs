@@ -1,21 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PlotController
+public class GraphPointsWrapper
 {
-    private static PlotController _instance;
+    
     private List<Point> points = new List<Point>();
-
-    public static PlotController getInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new PlotController();
-        }
-
-        return _instance;
-    }
-
+    
     public void loadPoints(List<BoatData> boatData)
     {
         for (int i = 0; i < boatData.Count / 2; i++)

@@ -1,28 +1,31 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BoatController : MonoBehaviour
 {
     private Rigidbody _rb;
     private BoatStatistics _boatStatistics;
     private WindIndicatorController _windIndicatorController;
-    private WindSystem _windSystem = WindSystem.GetInstance();
-    private PhysicsModel _physicsModel = PhysicsModel.GetInstance();
-    private PlotController _plotController = PlotController.getInstance();
+    private WindSystem _windSystem;
+    private PhysicsModel _physicsModel;
+    private GraphPointsWrapper _graphPointsWrapper;
     public GraphDrawer graphDrawer;
     
     public float turnSpeed = 50f;
     public float tau = 2.5f;
-    public float currentSpeed { get; private set; }
+    private float currentSpeed;
+    
+    public void Initialize(PhysicsModel physicsModel, WindSystem windSystem, GraphPointsWrapper graphPointsWrapper)
+    {
+        _physicsModel = physicsModel;
+        _windSystem = windSystem;
+        _graphPointsWrapper = graphPointsWrapper;
+    }
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _boatStatistics = GetComponent<BoatStatistics>();
         _windIndicatorController = GetComponent<WindIndicatorController>();
         _rb.isKinematic = false;
-        _physicsModel.LoadModel();
-        _plotController.loadPoints(_physicsModel.getBoatDataForBestLD());
-        graphDrawer.DrawGraph(_plotController.getPoints());
     }
 
     void FixedUpdate()

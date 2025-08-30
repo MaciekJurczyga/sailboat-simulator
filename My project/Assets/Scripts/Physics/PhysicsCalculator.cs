@@ -23,7 +23,7 @@ public class PhysicsCalculator
 
     public void Calculate(float vDeg, float windSpeedKnots, float liftToDragAirRatio)
     {
-        _borderAngleRad = calculateBorderAngleRad(liftToDragAirRatio);
+        _borderAngleRad = CalculateBorderAngleRad(liftToDragAirRatio);
         float vRad = vDeg * Mathf.Deg2Rad;
 
         int deadAngleCheck1 = Mathf.Cos(_borderAngleRad - vRad) >= 0 ? 1 : 0;
@@ -36,7 +36,7 @@ public class PhysicsCalculator
         _boatSpeed = CalculateBoatSpeed(vRad, windSpeedKnots);
     }
 
-    private float calculateBorderAngleRad(float liftToDragAirRation)
+    private float CalculateBorderAngleRad(float liftToDragAirRation)
     {
         return  -(Mathf.Atan(liftToDragAirRation) - Mathf.PI);
     }
