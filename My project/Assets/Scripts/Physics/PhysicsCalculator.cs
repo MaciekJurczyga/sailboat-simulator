@@ -21,7 +21,7 @@ public class PhysicsCalculator
     private float _wDeg;
     private float _boatSpeed;
 
-    public void Calculate(float vDeg, float windSpeedKnots, float liftToDragAirRatio)
+    public void Calculate(float vDeg, float liftToDragAirRatio)
     {
         _borderAngleRad = CalculateBorderAngleRad(liftToDragAirRatio);
         float vRad = vDeg * Mathf.Deg2Rad;
@@ -33,7 +33,7 @@ public class PhysicsCalculator
         _adjustedSOfV = CalculateAdjustedSOfV(vRad);
         _wRad = CalculateWRad(vRad);
         _wDeg = CalculateWDegrees();
-        _boatSpeed = CalculateBoatSpeed(vRad, windSpeedKnots);
+        _boatSpeed = CalculateBoatSpeedWithoutWindSpeed(vRad);
     }
 
     private float CalculateBorderAngleRad(float liftToDragAirRation)
@@ -67,11 +67,11 @@ public class PhysicsCalculator
         return (angleInDegrees >= 0) ? angleInDegrees : (180 + angleInDegrees);
     }
 
-    private float CalculateBoatSpeed(float vRad, float windSpeedKnots)
+    private float CalculateBoatSpeedWithoutWindSpeed(float vRad)
     {
         if (_adjustedSOfV > 0)
         {
-            return windSpeedKnots * _adjustedSOfV / Mathf.Sqrt(1 + _adjustedSOfV * _adjustedSOfV - 2 * _adjustedSOfV * Mathf.Cos(vRad));
+            return _adjustedSOfV / Mathf.Sqrt(1 + _adjustedSOfV * _adjustedSOfV - 2 * _adjustedSOfV * Mathf.Cos(vRad));
         }
         return 0;
     }

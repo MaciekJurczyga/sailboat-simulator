@@ -1,20 +1,43 @@
-﻿public class WindSystem
+﻿using UnityEngine;
+
+public class WindSystem : MonoBehaviour // Zmiana na MonoBehaviour
 {
+
+    public float averageWindSpeed = 10f;
     
-    // Range: 0-360 (must be positive!)
-    private float _windAngle = 0f; 
-    const float WindSpeedKnots = 10f; 
+    public float fluctuationAmplitude = 2f;
     
-    public WindSystem(){}
+    public float changeFrequency = 0.1f;
     
+    private float _currentWindSpeedKnots;
+
+
+    private float _windAngle = 0f;
+    
+    void Start()
+    {
+        _currentWindSpeedKnots = averageWindSpeed;
+    }
+    
+    void Update()
+    {
+
+        float perlinValue = Mathf.PerlinNoise(Time.time * changeFrequency, 0f);
+        
+        float fluctuation = Mathf.Lerp(-fluctuationAmplitude, fluctuationAmplitude, perlinValue);
+
+        _currentWindSpeedKnots = averageWindSpeed + fluctuation;
+    }
+
+
     public float GetWindSpeedMS()
     {
-        return WindSpeedKnots * 0.5144f; 
+        return _currentWindSpeedKnots * 0.5144f;
     }
 
     public float GetWindSpeedKnots()
     {
-        return WindSpeedKnots;
+        return _currentWindSpeedKnots;
     }
 
     public float getWindAngle()

@@ -2,33 +2,40 @@
 
 public class SimulationManager : MonoBehaviour
 {
- 
-    public BoatController boatController; 
-    public GraphDrawer graphDrawer;
-    public WindIndicatorController windIndicatorController;
 
-    private WindSystem _windSystem;
+    [SerializeField] private WindSystem _windSystem; 
+    
+    public BoatController boatController;
+    
+    public GraphDrawer graphDrawer;
+    
+    public WindIndicatorController windIndicatorController;
+    
     private PhysicsModel _physicsModel;
     private GraphPointsWrapper _graphPointsWrapper;
     private PhysicsCalculator _physicsCalculator;
 
-    void Awake() 
+    void Awake()
     {
 
-        _windSystem = new WindSystem();
+        if (_windSystem == null)
+        {
+            Debug.LogError("Referencja do WindSystem nie jest przypisana w SimulationManager!", this);
+            return;
+        }
+        
+
         _physicsCalculator = new PhysicsCalculator();
-        
+
         _physicsModel = new PhysicsModel(_windSystem, _physicsCalculator);
-        _physicsModel.LoadModel(); 
-        
+        _physicsModel.LoadModel();
+
         _graphPointsWrapper = new GraphPointsWrapper();
-        _graphPointsWrapper.loadPoints(_physicsModel.GetBoatDataForBestLD());
-        
+        _graphPointsWrapper.LoadPoints(_physicsModel.GetBoatDataForBestLD());
     }
 
     void Start()
     {
-        
         if (boatController != null)
         {
             boatController.Initialize(_physicsModel, _windSystem, _graphPointsWrapper);
@@ -40,9 +47,7 @@ public class SimulationManager : MonoBehaviour
 
         if (graphDrawer != null)
         {
-           
             graphDrawer.Initialize(_graphPointsWrapper);
-            graphDrawer.DrawGraph();
         }
 
         if (windIndicatorController != null)
@@ -51,7 +56,7 @@ public class SimulationManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("GrapDrawer controller is not assigned to SimulationManager!", this);
+            Debug.LogError("WindIndicatorController is not assigned to SimulationManager!", this);
         }
     }
     

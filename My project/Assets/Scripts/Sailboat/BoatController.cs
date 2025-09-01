@@ -30,16 +30,18 @@ public class BoatController : MonoBehaviour
 
     void FixedUpdate()
     {
-        BoatData foundBoatData = _physicsModel.FindBoatSpeed(transform.eulerAngles.y);
+        float windSpeed = _windSystem.GetWindSpeedKnots();
+        BoatData foundBoatData = _physicsModel.getBoatData(transform.eulerAngles.y);
         float leewayAngle = _physicsModel.FindLeewayAngle(foundBoatData);
-        MoveBoat(foundBoatData.CalculatedBoatSpeed, leewayAngle);
+        MoveBoat(foundBoatData.CalculatedBoatSpeedWithoutWindSpeed * windSpeed, leewayAngle);
         TurnBoat();
         _windIndicatorController.SetWindAngle(foundBoatData);
-        graphDrawer.DrawUserPoint(foundBoatData);
+        graphDrawer.DrawUserPoint(foundBoatData, windSpeed);
+        graphDrawer.UpdateGraphView(windSpeed);
         _boatStatistics.UpdateStats(
             foundBoatData,
             currentSpeed,
-            _windSystem.GetWindSpeedKnots());
+            windSpeed);
     }
 
     private void MoveBoat(float targetSpeed, float leewayAngle)

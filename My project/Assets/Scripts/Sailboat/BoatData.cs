@@ -2,12 +2,12 @@
 {
     public float vDeg;
     public float wDeg;
-    public float CalculatedBoatSpeed;
+    public float CalculatedBoatSpeedWithoutWindSpeed;
 
-    public BoatData(float vDeg, float wDeg, float calculatedBoatSpeed)
+    public BoatData(float vDeg, float wDeg, float calculatedBoatSpeedWithoutWindSpeed)
     {
         this.vDeg = vDeg;
         this.wDeg = wDeg;
-        CalculatedBoatSpeed = calculatedBoatSpeed;
+        CalculatedBoatSpeedWithoutWindSpeed = calculatedBoatSpeedWithoutWindSpeed;
     }
 }

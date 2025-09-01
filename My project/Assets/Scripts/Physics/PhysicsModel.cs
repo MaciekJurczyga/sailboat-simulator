@@ -31,7 +31,7 @@ public class PhysicsModel
             for (int i = 0; i < steps; i++)
             {
                 float vDeg = i * 0.01f;
-                _physics.Calculate(vDeg, _windSystem.GetWindSpeedKnots(), ldAir/LDairScaler);
+                _physics.Calculate(vDeg, ldAir/LDairScaler);
                 float wDeg = _physics.GetTrueWindAttackAngle();
                 float boatSpeed = _physics.GetBoatSpeed();
 
@@ -44,7 +44,7 @@ public class PhysicsModel
                 _boatDataList.Add(new BoatData(
                     360f - original.vDeg,
                     360f - original.wDeg,
-                    original.CalculatedBoatSpeed
+                    original.CalculatedBoatSpeedWithoutWindSpeed
                 ));
             }
 
@@ -90,7 +90,7 @@ public class PhysicsModel
     }
 
 
-    public BoatData FindBoatSpeed(float boatAngle)
+    public BoatData getBoatData(float boatAngle)
     {
         int foundLDAir = 50; // TODO: add code to calculate this value
         float targetAttackAngle = CalculateAttackAngle(boatAngle);
