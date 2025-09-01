@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WindSystem : MonoBehaviour // Zmiana na MonoBehaviour
+public class WindSystem : MonoBehaviour 
 {
 
     public float averageWindSpeed = 10f;

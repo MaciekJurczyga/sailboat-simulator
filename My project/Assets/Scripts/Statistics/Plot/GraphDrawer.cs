@@ -53,11 +53,11 @@ public class GraphDrawer : MonoBehaviour
   
         float quantizedWindSpeed = Mathf.Round(currentWindSpeed * 10f) / 10f;
 
-        // 2. Porównaj nową, "zgrubną" wartość z ostatnią zapisaną "zgrubną" wartością
+       
         if (!Mathf.Approximately(quantizedWindSpeed, _lastDrawnWindSpeed))
         {
-            RedrawGraph(currentWindSpeed); // Do rysowania użyj ORYGINALNEJ wartości
-            _lastDrawnWindSpeed = quantizedWindSpeed; // Zapisz "zgrubną" wartość
+            RedrawGraph(currentWindSpeed); 
+            _lastDrawnWindSpeed = quantizedWindSpeed; 
         }
         
     }
